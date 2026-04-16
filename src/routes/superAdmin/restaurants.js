@@ -192,7 +192,7 @@ router.patch('/:id', async (req, res) => {
 // ============================================================
 router.post('/:id/reset-admin-password', async (req, res) => {
   try {
-    const newPass = Math.random().toString(36).slice(-8)+'A1!';
+    const newPass = req.body?.new_password || (Math.random().toString(36).slice(-8)+'A1!');
     const hash = await bcrypt.hash(newPass, 12);
     const r = await pool.query(
       `UPDATE restaurant_users SET password_hash=$1 WHERE restaurant_id=$2 AND role='owner' RETURNING email`,
