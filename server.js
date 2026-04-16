@@ -14,8 +14,12 @@ const allowedOrigins = process.env.ALLOWED_ORIGINS
   ? process.env.ALLOWED_ORIGINS.split(',').map(o => o.trim())
   : ['http://localhost:5500', 'http://127.0.0.1:5500', 'http://localhost:3000'];
 
-// Wildcard patterns allowed in production (*.netlify.app, *.onrender.com)
-const allowedPatterns = [/\.netlify\.app$/, /\.onrender\.com$/];
+// Wildcard patterns allowed in production
+const allowedPatterns = [
+  /\.netlify\.app$/,
+  /\.vercel\.app$/,
+  /\.onrender\.com$/
+];
 
 app.use(cors({
   origin: (origin, callback) => {
