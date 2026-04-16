@@ -1,0 +1,38 @@
+services:
+  - type: web
+    name: dineos-api
+    env: node
+    region: oregon
+    plan: free
+    buildCommand: npm install
+    startCommand: node server.js
+    healthCheckPath: /health
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 10000
+      - key: DB_HOST
+        value: dpg-d7g5bld7vvec73el6ma0-a.oregon-postgres.render.com
+      - key: DB_PORT
+        value: 5432
+      - key: DB_NAME
+        value: dineos
+      - key: DB_USER
+        value: dineos_user
+      - key: DB_PASSWORD
+        value: MSIyBrD3IRPFDcKVIYTucsifsZqEsc0F
+      - key: SUPER_ADMIN_JWT_SECRET
+        value: ;9kx=,Y0A]r:\vBLd-[XlD3w}uQ'2`|jM+yah?EZC_%$p#eG
+      - key: SUPER_ADMIN_JWT_EXPIRY
+        value: 24h
+      - key: JWT_SECRET
+        value: -Lm<(1=Ape%;6&7bhsl`]^gyx#.kBn_v50)SNO@,T*i>6J:"
+      - key: JWT_EXPIRY
+        value: 7d
+      - key: ALLOW_SETUP
+        value: false
+      - key: SETUP_SECRET_KEY
+        value: qhkzmTWg8f69AHoeUN1waZRxcLC5FdrX
+      - key: ALLOWED_ORIGINS
+        value: https://admin.dineos.in,https://superadmin.dineos.in,https://dineos-admin.netlify.app,https://dineos-superadmin.netlify.app
