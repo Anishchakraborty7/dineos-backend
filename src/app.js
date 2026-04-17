@@ -24,6 +24,7 @@ app.use('/admin/reservations', require('./routes/admin/reservations'));
 app.use('/admin/customers',    require('./routes/admin/customers'));
 app.use('/admin/analytics',    require('./routes/admin/analytics'));
 app.use('/admin/profile',      require('./routes/admin/profile'));
+app.use('/admin/events',       require('./routes/admin/events'));
 
 // ── Public Mobile API (prefix: /v1) ──────────────────────────
 app.use('/v1/config',        require('./routes/public/config'));
@@ -31,6 +32,7 @@ app.use('/v1/menu',          require('./routes/public/menu'));
 app.use('/v1/auth',          require('./routes/public/auth'));
 app.use('/v1/orders',        require('./routes/public/orders'));
 app.use('/v1/reservations',  require('./routes/public/reservations'));
+app.use('/v1/events',        require('./routes/public/events'));
 
 // ── Health check ──────────────────────────────────────────────
 app.get('/health', (req, res) => res.json({ status: 'ok', ts: new Date() }));

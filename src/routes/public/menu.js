@@ -41,7 +41,7 @@ router.get('/featured', async (req, res) => {
        FROM menu_items WHERE restaurant_id=$1 AND is_featured=true AND is_available=true ORDER BY name`,
       [req.restaurant.id]
     );
-    return success(res, r.rows);
+    return success(res, { items: r.rows });
   } catch (err) { console.error(err); return error(res, 'Failed to fetch featured items.'); }
 });
 
@@ -56,7 +56,7 @@ router.get('/search', async (req, res) => {
        AND (name ILIKE $2 OR description ILIKE $2) ORDER BY name LIMIT 20`,
       [req.restaurant.id, `%${q.trim()}%`]
     );
-    return success(res, r.rows);
+    return success(res, { items: r.rows });
   } catch (err) { console.error(err); return error(res, 'Search failed.'); }
 });
 

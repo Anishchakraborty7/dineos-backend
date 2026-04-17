@@ -85,7 +85,7 @@ router.get('/my', customerAuth, async (req, res) => {
        GROUP BY o.order_id ORDER BY o.created_at DESC LIMIT $3 OFFSET $4`,
       [req.customer.customer_id, req.restaurant.id, parseInt(limit), offset]
     );
-    return success(res, r.rows);
+    return success(res, { orders: r.rows });
   } catch (err) { console.error(err); return error(res,'Failed to fetch orders.'); }
 });
 

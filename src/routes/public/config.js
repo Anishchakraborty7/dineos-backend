@@ -14,9 +14,11 @@ router.get('/', async (req, res) => {
               rc.logo_url, rc.primary_color, rc.secondary_color, rc.accent_color,
               rc.font_family, rc.hero_image_url, rc.tagline, rc.about_text,
               rc.social_facebook, rc.social_instagram, rc.social_twitter, rc.social_whatsapp,
-              rc.features_enabled, rc.maps_link
+              rc.features_enabled, rc.maps_link,
+              pl.features as plan_limits_features
        FROM restaurants r
        LEFT JOIN restaurant_config rc ON r.id = rc.restaurant_id
+       LEFT JOIN plan_limits pl ON r.plan = pl.plan
        WHERE r.id = $1`,
       [req.restaurant.id]
     );
